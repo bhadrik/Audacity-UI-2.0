@@ -17,5 +17,5 @@ UI prototype is designed in Figma, check it out [**here**](https://www.figma.com
 <h1 align="center">Audacity UI 2.0</h1>
 
 <div align="center">
-<img src="" height="500"/>
+<img src="https://github.com/bhadrik/Audacity-UI-2.0/blob/main/Audacity%20UI%202.0/Images/Audacity_UI_2.0.png?raw=true"/>
 </div>
