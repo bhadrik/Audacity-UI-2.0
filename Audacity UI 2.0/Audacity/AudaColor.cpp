@@ -8,3 +8,5 @@ wxColour* AudaColor::L2_75 = new wxColour(72, 72, 72);
 wxColour* AudaColor::L2_50 = new wxColour(111, 111, 111);
 wxColour* AudaColor::L3_100 = new wxColour(162, 162, 162);
 wxColour* AudaColor::L3_75 = new wxColour(214, 214, 214);
+
+wxColour* AudaColor::outlineCommon = AudaColor::L2_50;

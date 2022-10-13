@@ -24,8 +24,10 @@
   <ItemGroup>
     <ClCompile Include="Audacity\AudaColor.cpp" />
     <ClCompile Include="Audacity\AudaFrame.cpp" />
+    <ClCompile Include="Audacity\AudaPanel.cpp" />
     <ClCompile Include="Audacity\AudaTitleBar.cpp" />
     <ClCompile Include="Audacity\AudaWindow.cpp" />
+    <ClCompile Include="Audacity\AudaPanel_secondary.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

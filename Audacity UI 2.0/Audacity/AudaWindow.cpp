@@ -1,15 +1,11 @@
-#include "wx/wx.h"
 #include "Auda.h"
 
-class MyApp : public wxApp
-{
-public:
-    virtual bool OnInit()
-    {
-        AudaFrame* audaFrame = new AudaFrame("Auda frame", wxDefaultPosition, wxSize(300, 300));
-        audaFrame->Show();
-        return true;
-    }
-};
+bool AudaApplication::OnInit() {
 
-wxIMPLEMENT_APP(MyApp);
+    AudaFrame* appFrame = new AudaFrame(title, position, size);
+    appFrame->Show();
+
+    return true;
+}
+
+wxIMPLEMENT_APP(AudaApplication);

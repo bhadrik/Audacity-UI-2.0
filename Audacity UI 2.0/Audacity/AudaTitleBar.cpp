@@ -1,10 +1,11 @@
-#include "wx/wx.h"
 #include "Auda.h"
 
 
-AudaTitleBar::AudaTitleBar(wxWindow* parent, wxPoint pos, wxSize size, wxColour color) : wxWindow(parent, wxID_ANY, pos, size)
+AudaTitleBar::AudaTitleBar(wxWindow* parent, wxPoint pos, int height, wxColour color) : AudaPanel(parent, wxSize(100, height), pos)
 {
     m_dragging = false;
+
+    //SetSize(wxSize(100, height));
 
     SetBackgroundColour(color);
     Bind(wxEVT_LEFT_DOWN, &AudaTitleBar::OnMouseLeftDown, this);
