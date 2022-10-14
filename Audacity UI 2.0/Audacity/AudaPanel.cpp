@@ -1,7 +1,20 @@
 #include "Auda.h"
 
-AudaPanel::AudaPanel(wxWindow* parent, wxSize size, wxPoint position):
-    wxPanel(parent, wxID_ANY, position, size){}
+AudaPanel::AudaPanel(
+    wxWindow* parent, 
+    const wxColour& borderColor,
+    int borderSize,
+    wxWindowID windowId, 
+    const wxPoint& position, 
+    const wxSize& size, 
+    long style, 
+    const wxString& panelName
+) : wxPanel(parent, windowId, position, size, style, panelName)
+{
+    m_borderColor = borderColor;
+    m_borderSize = borderSize;
+}
+
 
 void AudaPanel::paintEvent(wxPaintEvent& evt)
 {
@@ -11,10 +24,18 @@ void AudaPanel::paintEvent(wxPaintEvent& evt)
 
 void AudaPanel::render(wxDC& dc)
 {
+    if (m_borderSize == 0) return;
+
     dc.SetBrush(wxBrush(wxColor(50,50,200,0), wxBrushStyle::wxBRUSHSTYLE_TRANSPARENT));
     dc.SetPen(wxPen(m_borderColor, m_borderSize, wxPenStyle::wxPENSTYLE_SOLID));
 
-    dc.DrawRectangle(GetPosition(), GetSize());
+    //wxPoint pos = wxPoint() - wxPoint(m_borderSize, m_borderSize);
+    //wxSize sz = GetSize() + wxSize(m_borderSize, m_borderSize);
+
+    wxPoint pos = wxPoint();
+    wxSize sz = GetSize();
+
+    dc.DrawRectangle(pos, sz);
 }
 
 void AudaPanel::SetBorderColor(wxColor color) {

@@ -1,22 +1,36 @@
 #include "Auda.h"
 
+class AudaTitleBar : public AudaPanel
+{
+public:
+    AudaTitleBar(wxWindow* parent, const wxPoint& position, const wxSize& size, const wxColour& color);
 
-AudaTitleBar::AudaTitleBar(wxWindow* parent, wxPoint pos, int height, wxColour color) : AudaPanel(parent, wxSize(100, height), pos)
+private:
+    void OnMouseLeftDown(wxMouseEvent& event);
+
+    void OnMouseLeftUp(wxMouseEvent&);
+
+    void OnMouseMotion(wxMouseEvent& event);
+
+    void OnMouseCaptureLost(wxMouseCaptureLostEvent&);
+
+    void FinishDrag();
+
+    wxPoint m_dragStartMouse;
+    wxPoint m_dragStartWindow;
+    bool m_dragging;
+};
+
+AudaTitleBar::AudaTitleBar(wxWindow* parent, const wxPoint& position, const wxSize& size, const wxColour& color) :
+    AudaPanel(parent, OUTLINE_COLOR, 2, wxID_ANY, position, size)
 {
     m_dragging = false;
-
-    //SetSize(wxSize(100, height));
 
     SetBackgroundColour(color);
     Bind(wxEVT_LEFT_DOWN, &AudaTitleBar::OnMouseLeftDown, this);
     Bind(wxEVT_MOUSE_CAPTURE_LOST, &AudaTitleBar::OnMouseCaptureLost,
         this);
 }
-
-//wxSize AudaTitleBar::DoGetBestClientSize() const
-//{
-//    return wxSize(-1, 20);
-//}
 
 void AudaTitleBar::OnMouseLeftDown(wxMouseEvent& event)
 {

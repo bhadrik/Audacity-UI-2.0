@@ -15,26 +15,33 @@
 // Color palette
 class AudaColor {
 public:
-    static wxColour* L1_100; //33
-    static wxColour* L1_75; //40
-    static wxColour* L1_50; //45
-    static wxColour* L2_100; //53
-    static wxColour* L2_75; //72
-    static wxColour* L2_50; //111
-    static wxColour* L3_100; //116
-    static wxColour* L3_75; //214
+    static wxColour L1_100; //33
+    static wxColour L1_75; //40
+    static wxColour L1_50; //45
+    static wxColour L2_100; //53
+    static wxColour L2_75; //72
+    static wxColour L2_50; //111
+    static wxColour L3_100; //116
+    static wxColour L3_75; //214
 
     // access color by name
-    static wxColour* outlineCommon;
+    static wxColour& outlineCommon;
 };
-
-
 
 class AudaPanel : public wxPanel {
     DECLARE_EVENT_TABLE()
 
 public:
-    AudaPanel(wxWindow* parent, wxSize size, wxPoint position);
+    AudaPanel(
+        wxWindow* parent,
+        const wxColour& borderColor = OUTLINE_COLOR,
+        int borderSize = 5,
+        wxWindowID windowId = wxID_ANY, 
+        const wxPoint& position = wxDefaultPosition, 
+        const wxSize& size = wxDefaultSize, 
+        long style = 2621440L, 
+        const wxString& panelName = wxString::FromAscii(wxPanelNameStr)
+    );
 
     void paintEvent(wxPaintEvent& evt);
 
@@ -44,50 +51,13 @@ public:
 
     void SetBorderSize(int size);
 
-    void UpdateBorder(wxRect rect);
-
 private:
-    wxColor m_borderColor = *OUTLINE_COLOR;
+    wxColor m_borderColor = OUTLINE_COLOR;
     int m_borderSize = 1;
 };
-
-
-class AudaTitleBar : public AudaPanel
-{
-public:
-    AudaTitleBar(wxWindow* parent, wxPoint pos, int height, wxColour color);
-
-private:
-    void OnMouseLeftDown(wxMouseEvent& event);
-
-    void OnMouseLeftUp(wxMouseEvent&);
-
-    void OnMouseMotion(wxMouseEvent& event);
-
-    void OnMouseCaptureLost(wxMouseCaptureLostEvent&);
-
-    void FinishDrag();
-
-    wxPoint m_dragStartMouse;
-    wxPoint m_dragStartWindow;
-    bool m_dragging;
-};
-
 
 class AudaFrame : public wxFrame
 {
 public:
     AudaFrame(const wxString& title, const wxPoint& pos, const wxSize& size);
-};
-
-
-class AudaApplication : public wxApp
-{
-private:
-    wxPoint position = wxDefaultPosition;
-    wxString title = (wxString)"Auda App";
-    wxSize size = wxSize(500, 400);
-
-public:
-    virtual bool OnInit();
 };

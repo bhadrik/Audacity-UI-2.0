@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Audacity\Auda.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Audacity\AudaColor.cpp" />
@@ -28,6 +29,13 @@
     <ClCompile Include="Audacity\AudaTitleBar.cpp" />
     <ClCompile Include="Audacity\AudaWindow.cpp" />
     <ClCompile Include="Audacity\AudaPanel_secondary.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico" />
+    <Image Include="Resources\Audacity_32p.ico" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
