@@ -17,22 +17,12 @@ AudaMenuBar::AudaMenuBar(wxWindow* parent, const wxPoint& position, const wxSize
 void AudaMenuBar::Append(AudaMenu * menu) {
     m_menuList.push_back(menu);
 
-    //AddToSizer(menu);
+    AddToSizer(menu);
 }
 
 void AudaMenuBar::AddToSizer(AudaMenu * menu) {
-    m_menuSizer->Add(menu, 0, wxEXPAND);
-    //SetSizerAndFit(m_menuSizer);
-}
-
-void AudaMenuBar::SetupSizer() {
-
-    for (auto const &i : m_menuList)
-    {
-        m_menuSizer->Add(i, 0, wxEXPAND);
-    }
-
-    //SetSizerAndFit(m_menuSizer);
+    m_menuSizer->Add(menu, 0, wxEXPAND | wxRIGHT | wxLeft, 20);
+    SetSizerAndFit(m_menuSizer);
     Layout();
 }
 
