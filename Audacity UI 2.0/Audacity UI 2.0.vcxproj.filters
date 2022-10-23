@@ -20,16 +20,16 @@
     <ClCompile Include="Audacity\AudaFrame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Audacity\AudaTitleBar.cpp">
+    <ClCompile Include="Audacity\AudaMenuBar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Audacity\AudaWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Audacity\AudaPanel_secondary.cpp">
+    <ClCompile Include="Audacity\AudaPanel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Audacity\AudaPanel.cpp">
+    <ClCompile Include="Audacity\AudaMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,6 +38,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Audacity\AudaMenuBar.h" />
+    <ClInclude Include="Audacity\AudaPanel.h" />
+    <ClInclude Include="Audacity\AudaColor.h" />
+    <ClInclude Include="Audacity\AudaMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">
