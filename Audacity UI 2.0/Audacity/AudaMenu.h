@@ -10,6 +10,8 @@ class AudaMenu : public AudaPanel{
 private:
 	wxStaticText* m_titleText;
     wxSizer* m_menuSizer;
+    bool m_overText = false;
+    bool m_overPanel = false;
 
 public:
     AudaMenu(
@@ -26,7 +28,8 @@ public:
 
     void OnMouseEnter(wxMouseEvent& event);
     void OnMouseExit(wxMouseEvent& event);
+    void OnMouseDown(wxMouseEvent& event);
     
-    void PendingOnMouseEnter(wxMouseEvent& event);
-    void PendingOnMouseExit(wxMouseEvent& event);
+    void Text_OnMouseEnter(wxMouseEvent& event);
+    void Text_OnMouseExit(wxMouseEvent& event);
 };

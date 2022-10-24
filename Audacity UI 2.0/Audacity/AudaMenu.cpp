@@ -6,6 +6,7 @@ AudaMenu::AudaMenu(wxWindow* parent, const wxString &title, const wxColour& bord
 	// Events listening 
 	Bind(wxEVT_ENTER_WINDOW, &AudaMenu::OnMouseEnter, this);
 	Bind(wxEVT_LEAVE_WINDOW, &AudaMenu::OnMouseExit, this);
+	Bind(wxEVT_LEFT_DOWN, &AudaMenu::OnMouseDown, this);
 
 	wxFont mainFont = wxFont(9, wxFontFamily::wxFONTFAMILY_SCRIPT, wxFontStyle::wxFONTSTYLE_NORMAL, wxFontWeight::wxFONTWEIGHT_NORMAL);
 	SetFont(mainFont);
@@ -17,10 +18,9 @@ AudaMenu::AudaMenu(wxWindow* parent, const wxString &title, const wxColour& bord
 
 	m_titleText = new wxStaticText((wxWindow*)this, wxID_ANY, title, wxDefaultPosition, wxDefaultSize, wxBG_STYLE_TRANSPARENT);
 	m_titleText->SetForegroundColour(*wxWHITE);
-	m_titleText->Bind(wxEVT_ENTER_WINDOW, &AudaMenu::PendingOnMouseEnter, this);
-	m_titleText->Bind(wxEVT_LEAVE_WINDOW, &AudaMenu::PendingOnMouseExit, this);
-	//m_titleText->Bind(wxEVT_ENTER_WINDOW, &AudaMenu::OnMouseEnter, this);
-	//m_titleText->Bind(wxEVT_LEAVE_WINDOW, &AudaMenu::OnMouseExit, this);
+	m_titleText->Bind(wxEVT_ENTER_WINDOW, &AudaMenu::Text_OnMouseEnter, this);
+	m_titleText->Bind(wxEVT_LEAVE_WINDOW, &AudaMenu::Text_OnMouseExit, this);
+	m_titleText->Bind(wxEVT_LEFT_DOWN, &AudaMenu::OnMouseDown, this);
 
 	m_menuSizer->Add(m_titleText, 0, wxALIGN_CENTER | wxRIGHT | wxLEFT, 10);
 	m_menuSizer->SetMinSize(wxSize(10, 14));
@@ -31,27 +31,36 @@ AudaMenu::AudaMenu(wxWindow* parent, const wxString &title, const wxColour& bord
 
 void AudaMenu::OnMouseEnter(wxMouseEvent& event)
 {
+	m_overPanel = true;
 	this->SetBackgroundColour(TEST_BLUE);
 	Refresh();
 }
 
 void AudaMenu::OnMouseExit(wxMouseEvent& event)
 {
-	this->SetBackgroundColour(TEST_GREEN);
+	m_overPanel = false;
+
+	if (!m_overText) {
+		this->SetBackgroundColour(TEST_GREEN);
+		Refresh();
+	}
+}
+
+void AudaMenu::OnMouseDown(wxMouseEvent& event)
+{
+	
+}
+
+void AudaMenu::Text_OnMouseEnter(wxMouseEvent& event) {
+	m_overText = true;
+
+	this->SetBackgroundColour(TEST_BLUE);
 	Refresh();
 }
 
-void AudaMenu::PendingOnMouseEnter(wxMouseEvent& event) {
-	this->AddPendingEvent(wxCommandEvent(wxEVT_ENTER_WINDOW));
-}
+void AudaMenu::Text_OnMouseExit(wxMouseEvent& event) {
+	m_overText = false;
 
-void AudaMenu::PendingOnMouseExit(wxMouseEvent& event) {
-	this->AddPendingEvent(wxCommandEvent(wxEVT_LEAVE_WINDOW));
+	this->SetBackgroundColour(TEST_GREEN);
+	Refresh();
 }
-
-//BEGIN_EVENT_TABLE(AudaMenu, wxPanel)
-//
-//EVT_ENTER_WINDOW(AudaMenu::OnMouseEnter)
-//EVT_LEAVE_WINDOW(AudaMenu::OnMouseExit)
-//
-//END_EVENT_TABLE()
