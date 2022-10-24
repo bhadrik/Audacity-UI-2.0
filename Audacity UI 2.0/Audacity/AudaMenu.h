@@ -4,8 +4,12 @@
 using namespace std;
 
 class AudaMenu : public AudaPanel{
+
+    //DECLARE_EVENT_TABLE()
+
 private:
-	wxStaticText* titleText;
+	wxStaticText* m_titleText;
+    wxSizer* m_menuSizer;
 
 public:
     AudaMenu(
@@ -19,4 +23,10 @@ public:
         long style = wxBackgroundStyle::wxBG_STYLE_TRANSPARENT,
         const wxString& panelName = wxString::FromAscii(wxPanelNameStr)
     );
+
+    void OnMouseEnter(wxMouseEvent& event);
+    void OnMouseExit(wxMouseEvent& event);
+    
+    void PendingOnMouseEnter(wxMouseEvent& event);
+    void PendingOnMouseExit(wxMouseEvent& event);
 };

@@ -48,9 +48,24 @@ void AudaPanel::SetBorderSize(int size) {
     Refresh();
 }
 
+//void AudaPanel::OnMouseEnter(wxMouseEvent& event)
+//{
+//    SetBackgroundColour(TEST_GREEN);
+//    Refresh();
+//    Update();
+//}
+//
+//void AudaPanel::OnMouseExit(wxMouseEvent& event)
+//{
+//    SetBackgroundColour(TEST_BLUE);
+//    Refresh();
+//    Update();
+//}
 
 BEGIN_EVENT_TABLE(AudaPanel, wxPanel)
 
 EVT_PAINT(AudaPanel::paintEvent)
+//EVT_ENTER_WINDOW(AudaPanel::OnMouseEnter)
+//EVT_LEAVE_WINDOW(AudaPanel::OnMouseExit)
 
 END_EVENT_TABLE()

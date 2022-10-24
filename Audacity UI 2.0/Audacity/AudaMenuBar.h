@@ -18,7 +18,6 @@ public:
     
     void SetupSizer();
 
-
 private:
     void OnMouseLeftDown(wxMouseEvent& event);
 

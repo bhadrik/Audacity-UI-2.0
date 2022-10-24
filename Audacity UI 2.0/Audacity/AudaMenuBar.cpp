@@ -7,21 +7,21 @@ AudaMenuBar::AudaMenuBar(wxWindow* parent, const wxPoint& position, const wxSize
 
     SetBackgroundColour(color);
     Bind(wxEVT_LEFT_DOWN, &AudaMenuBar::OnMouseLeftDown, this);
-    Bind(wxEVT_MOUSE_CAPTURE_LOST, &AudaMenuBar::OnMouseCaptureLost,
-        this);
+    Bind(wxEVT_MOUSE_CAPTURE_LOST, &AudaMenuBar::OnMouseCaptureLost, this);
 
     m_menuSizer = new wxBoxSizer(wxHORIZONTAL);
+    m_menuSizer->SetMinSize(size);
+    //m_menuSizer.
     //SetSizerAndFit(m_menuSizer);
 }
 
 void AudaMenuBar::Append(AudaMenu * menu) {
     m_menuList.push_back(menu);
-
     AddToSizer(menu);
 }
 
 void AudaMenuBar::AddToSizer(AudaMenu * menu) {
-    m_menuSizer->Add(menu, 0, wxEXPAND | wxRIGHT | wxLeft, 20);
+    m_menuSizer->Add(menu, 0, wxALIGN_CENTER);
     SetSizerAndFit(m_menuSizer);
     Layout();
 }

@@ -12,6 +12,12 @@
 #define L3_75_COLOR AudaColor::L3_75
 #define OUTLINE_COLOR AudaColor::outlineCommon
 
+
+#define TEST_GREEN AudaColor::test_Green
+#define TEST_RED AudaColor::test_Red
+#define TEST_BLUE AudaColor::test_Blue
+#define TEST_YELLOW AudaColor::test_Yellow
+
 // Color palette
 class AudaColor {
 public:
@@ -25,5 +31,11 @@ public:
     static wxColour L3_75; //214
 
     // access color by name
-    static wxColour& outlineCommon;
+    static wxColour &outlineCommon;
+    
+    // debug test color
+    static wxColour test_Green;
+    static wxColour test_Red;
+    static wxColour test_Blue;
+    static wxColour test_Yellow;
 };
