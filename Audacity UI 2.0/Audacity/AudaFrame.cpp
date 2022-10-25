@@ -5,7 +5,7 @@ AudaFrame::AudaFrame(const wxString& title, const wxPoint& pos, const wxSize& si
     wxFrame(NULL, wxID_ANY, title, pos, size)
 {
     SetBackgroundColour(AudaColor::L1_100);
-    Maximize(true);
+    //Maximize(true);
     
     AudaMenuBar* menuBar = new AudaMenuBar(this, wxDefaultPosition, wxSize(200, 20), L2_100_COLOR);
 
@@ -38,13 +38,5 @@ AudaFrame::AudaFrame(const wxString& title, const wxPoint& pos, const wxSize& si
 
     Layout();
 
-    //wxLog::SetLogLevel(wxLOG_Max);
-    //wxLog::SetVerbose();
-    ////create loggui and chain it
-    //wxLog::SetActiveTarget(new wxLogChain(new wxLogGui()));
-    //create logwindow
-    //wxLog *logger = new wxLogWindow(this, wxS("Log messages"), true);//true to make visible at start
-    //no need to setactivetarget or wxlogchain on wxLogWindow
-
-    //logger->LogText("This is something to log");
+    wxLog::SetActiveTarget(new wxLogStderr());
 }

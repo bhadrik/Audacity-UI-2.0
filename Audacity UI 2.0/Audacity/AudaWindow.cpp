@@ -16,13 +16,13 @@ public:
 
 bool AudaApplication::OnInit() {
 
-    title = "Auda app";
-    position = wxDefaultPosition;
-    size = wxSize(500, 400);
+    // Default Debug log
+    wxLog::SetActiveTarget(new wxLogStderr());
 
+    //const wxSize sizeM = appFrame->GetTextExtent("M");
+    appFrame->SetClientSize(appFrame->FromDIP(size));
     appFrame->SetIcon(wxICON(IDI_ICON1));
     appFrame->SetFont(mainFont);
-
     appFrame->Show();
 
     SetTopWindow(appFrame);

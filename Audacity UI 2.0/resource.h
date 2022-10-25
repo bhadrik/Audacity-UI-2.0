@@ -2,7 +2,10 @@
 // Microsoft Visual C++ generated include file.
 // Used by Resource.rc
 //
+
 #define IDI_ICON1                       102
+
+#define wxUSE_DPI_AWARE_MANIFEST        2
 
 //// Next default values for new objects
 //// 
